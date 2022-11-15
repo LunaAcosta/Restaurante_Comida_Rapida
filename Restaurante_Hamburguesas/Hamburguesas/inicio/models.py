@@ -16,8 +16,8 @@ class Empleado(models.Model):
 
 class Proveedor(models.Model):
     nombre = models.CharField(max_length = 30)
-    direccion = models.CharField(max_length = 200)
-    telefono = models.CharField(max_length = 8)
+    direccion = models.CharField(max_length = 200) 
+    telefono = models.CharField(max_length = 8) 
 
 class TipoCarne(models.Model):
     tipoCarme = models.CharField(max_length = 30)
