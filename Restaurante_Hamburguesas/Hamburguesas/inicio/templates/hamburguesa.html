@@ -1,0 +1,121 @@
+{% extends "base.html"%}
+
+{% block title %}Hamburguesas{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+      <div class"container col-6">
+        <form action="/agregarHamburguesa/" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputHambur">Nombre Hamburguesa</label>
+              <input type="text" class="form-control" name="inputHambur" id="inputHambur" placeholder="Ingrese nombre" required>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label>Tipo Carne</label>
+              <p>
+                  <select name="inputTipo" class="form-control" required>
+                      <option selected>------Tipo Carne------</option>
+                      {% for TipoC in agTipoCarne %}
+                          <option value="{{ TipoC.id }}">{{ TipoC.tipoCarme }}</option>
+                      {% endfor %}
+                  </select>
+              </p> 
+            </div>
+
+          </div>
+          <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputTamaño">Tamaño</label>
+                <input type="text" class="form-control" name="inputTamaño" id="inputTamaño" placeholder="Ingrese Tamaño" required>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="inputNCarne">Numero de carne</label>
+                <input type="text" class="form-control" name="inputNCarne" id="inputNCarne" placeholder="Numero de carnes" required>
+              </div> 
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputVegetales">Vegetales</label>
+              <input type="text" class="form-control" name="inputVegetales" id="inputVegetales" placeholder="Vegetales" required>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="inputPrecio">Precio</label>
+              <input step=".001" type="number" class="form-control" name="inputPrecio" id="inputPrecio" placeholder="Ingrese el Precio" required>
+            </div> 
+        </div>
+
+        <div class="form">
+          <label>Sucursal</label>
+          <p>
+              <select name="inputSucursales" class="form-control" required>
+                  <option selected>------Sucursales------</option>
+                  {% for sucursal in agSucursal %}
+                      <option value="{{ sucursal.id }}">{{ sucursal.nombre }}</option>
+                  {% endfor %}
+              </select>
+          </p> 
+        </div>
+
+      
+          <button type="submit" class="btn btn-primary btn-lg btn-block">Agregar</button>
+       </form>
+
+      </div>
+      
+  
+        <div class="container col-11">
+            <h2 class="text-center">Registro de Hamburguesas</h2>
+            <table class="table table-hover table-bordered table-danger">
+                <thead>
+                    <tr class="table-warning">
+                        <th>Nombre</th>
+                        <th>Tipo Carne</th>
+                        <th>Tamaño</th>
+                        <th>Numero Carne</th>
+                        <th>Vegetales</th>
+                        <th>Precio</th>
+                        <th>Sucursal</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for t in tablaHambur%}
+                    <tr>
+                        <td>{{t.nombre}}</td>
+                        <td>{{t.tipoCarme}}</td>
+                        <td>{{t.tamaño}}</td>
+                        <td>{{t.numeroCarne}}</td>
+                        <td>{{t.vegetales}}</td>
+                        <td>$ {{t.precio}}</td>
+                        <td>{{t.sucursal}}</td>
+                        <td><a class="btn btn-warning" href="/editarH/{{t.id}}">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                              <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                              <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                            </svg>
+                      </a></td>
+                      <td><a class="btn btn-danger"  href="/eliminarH/{{t.id}}">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                            </svg>
+                      </a></td> 
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+

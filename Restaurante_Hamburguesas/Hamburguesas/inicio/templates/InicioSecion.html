@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Iniciar Seccion{% endblock %}</title>
+      
+        <!-- Google Font: Source Sans Pro -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+        <!-- Font Awesome Icons -->
+        <link rel="stylesheet" href="{%static 'lib/Plantilla/plugins/fontawesome-free/css/all.min.css'%}">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="{%static 'lib/Plantilla/dist/css/adminlte.min.css'%}">
+    </head>
+ <body class="hold-transition login-page">
+    <div class="login-box">
+      <div class="login-logo">
+        <a href="../../index2.html"><b>Hamburguer</b>MASTER</a>
+      </div>
+      <!-- /.login-logo -->
+      <div class="card">
+        <div class="card-body login-card-body">
+          <p class="login-box-msg">INICIAR SECCIÓN</p>
+
+          <form method="POST">{% csrf_token %}
+            <div class="form-group">
+              <label for="InputUsername">Nombre del Usuario</label>
+              <input type="text" name="InputUsername" class="form-control" id="InputUsername" required>
+            </div>
+            <div class="form-group">
+              <label for="InputPassword">Contraseña</label>
+              <input type="password" name="InputPassword" class="form-control" id="InputPassword" required>
+            </div>
+            <div class="text-center">
+              <button href="{% url 'inicio'%}" type="submit" class="btn btn-primary btn-block">Iniciar</button>
+            </div>
+          </form>
+    
+    
+          <div class="social-auth-links text-center mb-3">
+            <p>- OR -</p>
+            <a href="#" class="btn btn-block btn-primary">
+              <i class="fab fa-facebook mr-2"></i> Iniciar sesión usando Facebook
+            </a>
+            <a href="#" class="btn btn-block btn-danger">
+              <i class="fab fa-google-plus mr-2"></i> Iniciar sesión con Google+
+            </a>
+          </div>
+          <!-- /.social-auth-links -->
+  
+          <p class="mb-0">
+            <a href="{% url 'registro'%}" class="text-center">Registrar una nueva membresía </a>
+          </p>
+        </div>
+        <!-- /.login-card-body -->
+      </div>
+    
+   
+    
+  </body>
+</html>

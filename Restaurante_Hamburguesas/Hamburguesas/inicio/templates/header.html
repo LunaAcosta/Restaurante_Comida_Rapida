@@ -3,7 +3,7 @@
     <div class="container">
       <a href="../../index3.html" class="navbar-brand">
         <img src="{%static 'img/Logo.jpg'%}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
-        <span class="brand-text font-weight-light" style="color:rgb(255, 253, 253);">Wendy's</span>
+        <span class="brand-text font-weight-light" style="color:rgb(255, 253, 253);">HamburMi</span>
 
 
       <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,17 +19,38 @@
             <a href="#" class="nav-link" style="color:rgb(255, 253, 253);"></a>
           </li>
 
+          {% if user.is_authenticated %}
           <li class="nav-item">
             <a href="{% url 'inicio'%}" class="nav-link" style="color:rgb(255, 253, 253);">Ir a Incio</a>
           </li>
 
           <li class="nav-item">
-            <a href="{% url 'about'%}" class="nav-link" style="color:rgb(255, 253, 253);">Acerca de</a>
+            <a href="{% url 'producto'%}" class="nav-link" style="color:rgb(255, 253, 253);">Productos</a>
           </li>
 
+          <li class="nav-item">
+            <a href="{% url 'sucursal'%}" class="nav-link" style="color:rgb(255, 253, 253);">Sucursales</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{% url 'empleados'%}" class="nav-link" style="color:rgb(255, 253, 253);">Empleado</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{% url 'TablaHambur'%}" class="nav-link" style="color:rgb(255, 253, 253);">Hamburguesas</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a href="{% url 'inicio'%}" class="nav-link" style="color:rgb(255, 253, 253);">Ir a Incio</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{% url 'producto'%}" class="nav-link" style="color:rgb(255, 253, 253);">Productos</a>
+          </li>
           
-        
-        
+          {% endif %}
+
+         
         </ul>
 
         <!-- SEARCH FORM -->
@@ -51,7 +72,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
             <i class="fas fa-comments"></i>
-            <span class="badge badge-danger navbar-badge">3</span>
+            <span class="badge badge-danger navbar-badge">45</span>
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <a href="#" class="dropdown-item">
@@ -105,6 +126,7 @@
             <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
           </div>
         </li>
+      </ul>
        
     </div>
   </nav>

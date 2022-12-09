@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Crear cuenta{% endblock %}</title>
+      
+        <!-- Google Font: Source Sans Pro -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+        <!-- Font Awesome Icons -->
+        <link rel="stylesheet" href="{%static 'lib/Plantilla/plugins/fontawesome-free/css/all.min.css'%}">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="{%static 'lib/Plantilla/dist/css/adminlte.min.css'%}">
+    </head>
+ <body class="hold-transition login-page">
+
+    {% block content %}
+
+    <form method="post" action="/registro/"> {%csrf_token%}
+        {{form.as_p}}
+    <button class="btn btn-danger"type="submit">Registrarse</button>
+
+    </form>
+    {% endblock %}
+
+    
+
+  </body>
+</html>
